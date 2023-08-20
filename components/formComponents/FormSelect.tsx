@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@chakra-ui/react";
 import FromWrapper from "./FormWrapper";
-import { IFormInputProps } from "@src/interface/forms";
+import { IFormInputProps } from "../../interface/forms";
 import ReactSelect, { Props } from "react-select";
 
 interface IFormSelectProps
