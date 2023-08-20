@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "@chakra-ui/react";
 import FormWrapper from "./FormWrapper";
-import { IFormInputProps } from "@src/interface/forms";
+import { IFormInputProps } from "../../interface/forms";
 
 const FormInput = React.forwardRef<HTMLInputElement, IFormInputProps>(
   (
