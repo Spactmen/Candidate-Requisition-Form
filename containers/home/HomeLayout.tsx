@@ -16,6 +16,7 @@ import JobDetailsForm from "./JobDetailsForm";
 import RequisitionForm from "./RequisitionDetailsForm";
 import DisplayCard from "./PreviewCard";
 import { PageNumbers } from "../../interface/home";
+import DataProvider from "./DataProvider";
 
 const CustomTab: React.FC<TabProps> = ({ children, ...props }) => {
   return (
@@ -44,20 +45,22 @@ const HomeLayout = () => {
             <CustomTab>Job Details</CustomTab>
             <CustomTab>Interview Settings</CustomTab>
           </TabList>
-          <Grid display="grid" gridTemplateColumns="3fr 2fr" gap="24px">
-            <TabPanels>
-              <TabPanel>
-                <RequisitionForm handleTab={handlePage} />
-              </TabPanel>
-              <TabPanel>
-                <JobDetailsForm handleTab={handlePage} />
-              </TabPanel>
-              <TabPanel>
-                <InterviewSettingsForm handleTab={handlePage} />
-              </TabPanel>
-            </TabPanels>
-            <DisplayCard />
-          </Grid>
+          <DataProvider>
+            <Grid display="grid" gridTemplateColumns="3fr 2fr" gap="24px">
+              <TabPanels>
+                <TabPanel>
+                  <RequisitionForm handleTab={handlePage} />
+                </TabPanel>
+                <TabPanel>
+                  <JobDetailsForm handleTab={handlePage} />
+                </TabPanel>
+                <TabPanel>
+                  <InterviewSettingsForm handleTab={handlePage} />
+                </TabPanel>
+              </TabPanels>
+              <DisplayCard />
+            </Grid>
+          </DataProvider>
         </Tabs>
       </Container>
     </Box>

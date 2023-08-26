@@ -13,6 +13,9 @@ import {
   urgencyOptions,
 } from "./constants";
 
+import { useData } from "./DataProvider";
+import InterviewDetailsForm from "./InterviewSettingsForm";
+
 const DataCard: React.FC<{ title: string; children: React.ReactNode }> = ({
   title,
   children,
@@ -49,7 +52,11 @@ const PreviewCard: React.FC<{
   requisitionDetails?: IRequisitionDetails;
   jobDetails?: IJobDetails;
   interviewSettings?: IInterViewSettings;
-}> = ({ requisitionDetails, jobDetails, interviewSettings }) => {
+}> = () => {
+  const { state } = useData();
+  const { requisitionDetails, jobDetails, interviewSettings } = state;
+
+  console.log(state);
   return (
     <Box p="1rem">
       <Box borderRadius="10px" bgColor="gray.100" height="fit-content">
@@ -102,10 +109,12 @@ const PreviewCard: React.FC<{
                   (item) => item?.value === requisitionDetails?.urgency
                 )?.label
               }
+              // value={requisitionDetails.urgency}
             />
             <KeyValue
               title="Gender"
               value={
+                // requisitionDetails.gender
                 genderOptions.find(
                   (item) => item?.value === requisitionDetails?.gender
                 )?.label
@@ -121,6 +130,7 @@ const PreviewCard: React.FC<{
             <KeyValue
               title="Interview Duration"
               value={
+                // interviewSettings.interviewDuration
                 interviewDurationOptions.find(
                   (item) => item?.value === interviewSettings?.interviewDuration
                 )?.label
@@ -129,6 +139,7 @@ const PreviewCard: React.FC<{
             <KeyValue
               title="Interview Language"
               value={
+                // interviewSettings.interviewLanguage
                 interviewLanguageOptions.find(
                   (item) => item?.value === interviewSettings?.interviewLanguage
                 )?.label
@@ -137,6 +148,7 @@ const PreviewCard: React.FC<{
             <KeyValue
               title="Interview Mode"
               value={
+                // interviewSettings.interviewMode
                 interviewModeOptions.find(
                   (item) => item?.value === interviewSettings?.interviewMode
                 )?.label
